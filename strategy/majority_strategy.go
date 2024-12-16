@@ -5,8 +5,8 @@
 package strategy
 
 import (
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // MajorityStrategy emits actionable recommendations aligned with what the strategies in the group recommends.

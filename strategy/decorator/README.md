@@ -3,7 +3,7 @@
 # decorator
 
 ```go
-import "github.com/cinar/indicator/v2/strategy/decorator"
+import "github.com/dong-tran/gotrade/strategy/decorator"
 ```
 
 Package decorator contains the decorator strategy functions.

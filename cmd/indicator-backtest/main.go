@@ -11,14 +11,14 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/backtest"
-	"github.com/cinar/indicator/v2/strategy"
-	"github.com/cinar/indicator/v2/strategy/compound"
-	"github.com/cinar/indicator/v2/strategy/momentum"
-	"github.com/cinar/indicator/v2/strategy/trend"
-	"github.com/cinar/indicator/v2/strategy/volatility"
-	"github.com/cinar/indicator/v2/strategy/volume"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/backtest"
+	"github.com/dong-tran/gotrade/strategy"
+	"github.com/dong-tran/gotrade/strategy/compound"
+	"github.com/dong-tran/gotrade/strategy/momentum"
+	"github.com/dong-tran/gotrade/strategy/trend"
+	"github.com/dong-tran/gotrade/strategy/volatility"
+	"github.com/dong-tran/gotrade/strategy/volume"
 )
 
 func main() {

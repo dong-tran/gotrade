@@ -19,7 +19,7 @@
 package volume
 
 import (
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 // AllStrategies returns a slice containing references to all available volume strategies.

@@ -3,7 +3,7 @@
 # momentum
 
 ```go
-import "github.com/cinar/indicator/v2/momentum"
+import "github.com/dong-tran/gotrade/momentum"
 ```
 
 Package momentum contains the momentum indicator functions.

@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 func TestChanToJSON(t *testing.T) {

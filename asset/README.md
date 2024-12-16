@@ -3,7 +3,7 @@
 # asset
 
 ```go
-import "github.com/cinar/indicator/v2/asset"
+import "github.com/dong-tran/gotrade/asset"
 ```
 
 Package asset contains the asset related functions.

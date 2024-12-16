@@ -5,7 +5,7 @@
 package volume
 
 import (
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 const (

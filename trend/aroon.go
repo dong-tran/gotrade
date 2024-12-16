@@ -4,7 +4,7 @@
 
 package trend
 
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 
 const (
 	// DefaultAroonPeriod is the default Aroon period of 25.

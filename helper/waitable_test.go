@@ -8,7 +8,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 func TestWaitable(_ *testing.T) {

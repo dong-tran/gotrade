@@ -3,7 +3,7 @@
 # volatility
 
 ```go
-import "github.com/cinar/indicator/v2/volatility"
+import "github.com/dong-tran/gotrade/volatility"
 ```
 
 Package volatility contains the volatility indicator functions.

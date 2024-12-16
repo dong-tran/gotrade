@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 func TestBuyAndHoldStrategy(t *testing.T) {

@@ -5,10 +5,10 @@
 package trend
 
 import (
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
-	"github.com/cinar/indicator/v2/trend"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
+	"github.com/dong-tran/gotrade/trend"
 )
 
 // KdjStrategy represents the configuration parameters for calculating the KDJ strategy.

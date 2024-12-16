@@ -7,8 +7,8 @@ package volume_test
 import (
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/volume"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/volume"
 )
 
 func TestEmv(t *testing.T) {

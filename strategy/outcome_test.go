@@ -7,8 +7,8 @@ package strategy_test
 import (
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 func TestOutcome(t *testing.T) {

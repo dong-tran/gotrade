@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cinar/indicator/v2/asset"
+	"github.com/dong-tran/gotrade/asset"
 )
 
 func TestTiingoRepositoryAssets(t *testing.T) {

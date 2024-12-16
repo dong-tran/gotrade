@@ -1,0 +1,10 @@
+.devcontainer
+.github
+.vscode
+.deepsource.toml
+.gitignore
+.gomarkdoc.yml
+*.md
+codecov.yml
+revive.toml
+taskfile.yml

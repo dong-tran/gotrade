@@ -19,9 +19,9 @@
 package volatility
 
 import (
-	"github.com/cinar/indicator/v2/strategy"
-	"github.com/cinar/indicator/v2/trend"
-	"github.com/cinar/indicator/v2/volatility"
+	"github.com/dong-tran/gotrade/strategy"
+	"github.com/dong-tran/gotrade/trend"
+	"github.com/dong-tran/gotrade/volatility"
 )
 
 // AllStrategies returns a slice containing references to all available volatility strategies.

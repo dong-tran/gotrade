@@ -7,11 +7,11 @@ package volume
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
-	"github.com/cinar/indicator/v2/trend"
-	"github.com/cinar/indicator/v2/volume"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
+	"github.com/dong-tran/gotrade/trend"
+	"github.com/dong-tran/gotrade/volume"
 )
 
 const (

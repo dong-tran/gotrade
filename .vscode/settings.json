@@ -1,0 +1,5 @@
+{
+  "go.toolsEnvVars": {
+    "GOROOT": "/Users/mrku/sdk/go1.22.7"
+  }
+}

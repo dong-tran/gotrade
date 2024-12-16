@@ -4,7 +4,7 @@
 
 package strategy
 
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 
 // Outcome simulates the potential result of executing the given actions based on the provided values.
 func Outcome[T helper.Number](values <-chan T, actions <-chan Action) <-chan float64 {

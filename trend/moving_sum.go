@@ -4,7 +4,7 @@
 
 package trend
 
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 
 // MovingSum represents the configuration parameters for calculating the Moving Sum over the specified period.
 //

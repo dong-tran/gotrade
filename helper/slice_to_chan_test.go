@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 func TestSliceToChan(t *testing.T) {

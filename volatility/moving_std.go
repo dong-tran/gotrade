@@ -7,7 +7,7 @@ package volatility
 import (
 	"math"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // MovingStd represents the configuration parameters for calculating the Moving Standard Deviation

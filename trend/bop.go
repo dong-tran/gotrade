@@ -4,7 +4,7 @@
 
 package trend
 
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 
 // Bop gauges the strength of buying and selling forces using
 // the Balance of Power (BoP) indicator. A positive BoP value

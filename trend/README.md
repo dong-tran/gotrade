@@ -3,7 +3,7 @@
 # trend
 
 ```go
-import "github.com/cinar/indicator/v2/trend"
+import "github.com/dong-tran/gotrade/trend"
 ```
 
 Package trend contains the trend indicator functions.

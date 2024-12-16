@@ -3,7 +3,7 @@
 # backtest
 
 ```go
-import "github.com/cinar/indicator/v2/backtest"
+import "github.com/dong-tran/gotrade/backtest"
 ```
 
 Package backtest contains the backtest functions.

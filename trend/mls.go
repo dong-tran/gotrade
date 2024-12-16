@@ -5,7 +5,7 @@
 package trend
 
 import (
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // Mls represents the configuration parameters for calculating the Moving Least Square (MLS). It is a regression

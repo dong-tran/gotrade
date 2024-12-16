@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/trend"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/trend"
 )
 
 // Testing against the example at URL:

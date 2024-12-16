@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 func TestDaysBetween(t *testing.T) {

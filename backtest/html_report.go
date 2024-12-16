@@ -16,9 +16,9 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 const (
@@ -26,10 +26,10 @@ const (
 	DefaultWriteStrategyReports = true
 )
 
-//go:embed "html_report.tmpl"
+//go:embed "html_report_custom.tmpl"
 var htmlReportTmpl string
 
-//go:embed "html_asset_report.tmpl"
+//go:embed "html_asset_report_custom.tmpl"
 var htmlAssetReportTmpl string
 
 // HTMLReport is the backtest HTML report.

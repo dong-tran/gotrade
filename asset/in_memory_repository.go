@@ -7,7 +7,7 @@ package asset
 import (
 	"time"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // InMemoryRepository stores and retrieves asset snapshots using

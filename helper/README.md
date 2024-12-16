@@ -3,7 +3,7 @@
 # helper
 
 ```go
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 ```
 
 Package helper contains the helper functions.

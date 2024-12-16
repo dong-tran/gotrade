@@ -7,9 +7,9 @@ package decorator
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 // InverseStrategy reverses the advice of another strategy. For example, if the original strategy suggests buying an

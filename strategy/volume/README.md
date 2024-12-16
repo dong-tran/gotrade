@@ -3,7 +3,7 @@
 # volume
 
 ```go
-import "github.com/cinar/indicator/v2/strategy/volume"
+import "github.com/dong-tran/gotrade/strategy/volume"
 ```
 
 Package volume contains the volume strategy functions.

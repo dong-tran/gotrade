@@ -3,7 +3,7 @@
 # compound
 
 ```go
-import "github.com/cinar/indicator/v2/strategy/compound"
+import "github.com/dong-tran/gotrade/strategy/compound"
 ```
 
 Package compound contains the compound strategy functions.

@@ -7,7 +7,7 @@ package trend
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 const (

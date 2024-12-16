@@ -3,7 +3,7 @@
 # strategy
 
 ```go
-import "github.com/cinar/indicator/v2/strategy"
+import "github.com/dong-tran/gotrade/strategy"
 ```
 
 Package strategy contains the strategy functions.

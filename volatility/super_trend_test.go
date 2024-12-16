@@ -7,8 +7,8 @@ package volatility_test
 import (
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/volatility"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/volatility"
 )
 
 func TestSuperTrend(t *testing.T) {

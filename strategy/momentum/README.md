@@ -3,7 +3,7 @@
 # momentum
 
 ```go
-import "github.com/cinar/indicator/v2/strategy/momentum"
+import "github.com/dong-tran/gotrade/strategy/momentum"
 ```
 
 Package momentum contains the momentum strategy functions.

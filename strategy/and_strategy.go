@@ -7,8 +7,8 @@ package strategy
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // AndStrategy combines multiple strategies and emits actionable recommendations when **all** strategies in

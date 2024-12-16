@@ -7,8 +7,8 @@ package strategy
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // SplitStrategy leverages two separate strategies. It utilizes the first strategy to identify potential Buy
@@ -32,7 +32,7 @@ func NewSplitStrategy(buyStrategy, sellStrategy Strategy) *SplitStrategy {
 
 // Name returns the name of the strategy.
 func (s *SplitStrategy) Name() string {
-	return fmt.Sprintf("SplitStrategy(%s, %s)", s.BuyStrategy.Name(), s.SellStrategy.Name())
+	return fmt.Sprintf("%s & %s", s.BuyStrategy.Name(), s.SellStrategy.Name())
 }
 
 // Compute processes the provided asset snapshots and generates a stream of actionable recommendations.

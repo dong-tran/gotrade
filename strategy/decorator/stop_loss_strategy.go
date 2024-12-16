@@ -7,9 +7,9 @@ package decorator
 import (
 	"fmt"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 // StopLossStrategy prevents a loss by recommending a sell action when the assets drops below the given threshold.
@@ -31,7 +31,7 @@ func NewStopLossStrategy(innerStrategy strategy.Strategy, percentage float64) *S
 
 // Name returns the name of the strategy.
 func (s *StopLossStrategy) Name() string {
-	return fmt.Sprintf("Stop Loss Strategy (%s)", s.InnertStrategy.Name())
+	return fmt.Sprintf("%s (SL)", s.InnertStrategy.Name())
 }
 
 // Compute processes the provided asset snapshots and generates a stream of actionable recommendations.

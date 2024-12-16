@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-//go:embed "report.tmpl"
+//go:embed "report_custom.tmpl"
 var reportTmpl string
 
 const (

@@ -3,7 +3,7 @@
 # volume
 
 ```go
-import "github.com/cinar/indicator/v2/volume"
+import "github.com/dong-tran/gotrade/volume"
 ```
 
 Package volume contains the volume indicator functions.

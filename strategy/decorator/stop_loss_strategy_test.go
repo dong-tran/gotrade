@@ -8,11 +8,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/strategy"
-	"github.com/cinar/indicator/v2/strategy/decorator"
-	"github.com/cinar/indicator/v2/strategy/trend"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/strategy"
+	"github.com/dong-tran/gotrade/strategy/decorator"
+	"github.com/dong-tran/gotrade/strategy/trend"
 )
 
 func TestStopLossStrategy(t *testing.T) {

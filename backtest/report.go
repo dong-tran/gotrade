@@ -5,8 +5,8 @@
 package backtest
 
 import (
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/strategy"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/strategy"
 )
 
 // Report is the backtest report interface.

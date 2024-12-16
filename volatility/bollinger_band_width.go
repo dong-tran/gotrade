@@ -5,7 +5,7 @@
 package volatility
 
 import (
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // BollingerBandWidth represents the configuration parameters for calculating the Bollinger Band Width.

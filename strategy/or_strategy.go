@@ -5,8 +5,8 @@
 package strategy
 
 import (
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 // OrStrategy emits actionable recommendations when **at least one** strategy in the group recommends an

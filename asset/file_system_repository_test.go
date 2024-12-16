@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cinar/indicator/v2/asset"
-	"github.com/cinar/indicator/v2/helper"
+	"github.com/dong-tran/gotrade/asset"
+	"github.com/dong-tran/gotrade/helper"
 )
 
 var repositoryBase = "testdata/repository"

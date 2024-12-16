@@ -7,8 +7,8 @@ package momentum_test
 import (
 	"testing"
 
-	"github.com/cinar/indicator/v2/helper"
-	"github.com/cinar/indicator/v2/momentum"
+	"github.com/dong-tran/gotrade/helper"
+	"github.com/dong-tran/gotrade/momentum"
 )
 
 func TestStochasticRsi(t *testing.T) {

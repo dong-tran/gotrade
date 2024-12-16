@@ -4,7 +4,7 @@
 
 package volume
 
-import "github.com/cinar/indicator/v2/helper"
+import "github.com/dong-tran/gotrade/helper"
 
 // Mfm holds configuration parameters for calculating the Money Flow Multiplier (MFM),
 // which adjusts volume based on the closing price's position within the high-low range:
