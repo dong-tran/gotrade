@@ -40,10 +40,10 @@ func Backtest(days int, symbols []string) {
 	repository := asset.NewFileSystemRepository(csvPath)
 	backtest := backtest.NewBacktest(repository, report)
 	backtest.Names = append(backtest.Names, symbols...)
-	backtest.Workers = 1
+	backtest.Workers = 3
 	backtest.LastDays = days
 	//
-	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On UpTrend", trend.NewBopStrategy(), volume.NewForceIndexStrategy(), momentum.NewAwesomeOscillatorStrategy())))
+	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On UpTrend", trend.NewBopStrategy(), volume.NewForceIndexStrategy(), momentum.NewAwesomeOscillatorStrategy())))
 	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On DownTrend", trend.NewBopStrategy(), momentum.NewRsiStrategy())))
 	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("MACD Stochastic", trend.NewMacdStrategy(), momentum.NewStochasticRsiStrategy())))
 
