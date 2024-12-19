@@ -10,7 +10,7 @@ import (
 func main() {
 	days, err := strconv.Atoi(os.Getenv("LOOKBACK_DAYS"))
 	if err != nil {
-		days = 730
+		days = 95
 	}
 
 	fetchSource := os.Getenv("FETCH_SOURCE")
@@ -18,10 +18,13 @@ func main() {
 		fetchSource = "24hmoney"
 	}
 
-	symbols := custom.ReadSymbols()
+	symbolsSource := os.Getenv("SYMBOLS_SOURCE")
+	symbolsReader := custom.NewSymbolsReader(symbolsSource)
+	symbols := symbolsReader.Read()
+
 	fetcher := custom.NewFetchData(fetchSource)
-	fetcher.FetchData(symbols, days)
+	fetcher.FetchData(symbols, 730)
 	custom.Backtest(days, symbols)
-	// Calculate(symbols)
+	// // Calculate(symbols)
 	custom.UploadFile()
 }

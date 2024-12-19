@@ -103,7 +103,7 @@ func (f *Cafef) FetchData(symbols []string, days int) {
 		// Write CSV header
 		writer := csv.NewWriter(file)
 		defer writer.Flush()
-		writer.Write([]string{"Date", "Open", "High", "Low", "Close", "Volume"})
+		writer.Write([]string{"Date", "Open", "High", "Low", "Close", "Adj Close", "Volume"})
 
 		// Write data rows to the CSV
 		for i := len(symbolData.Data.Value.DataInfor) - 1; i >= 0; i-- {
@@ -115,7 +115,7 @@ func (f *Cafef) FetchData(symbols []string, days int) {
 				fmt.Sprintf("%.2f", record.High),
 				fmt.Sprintf("%.2f", record.Low),
 				fmt.Sprintf("%.2f", record.Close),
-				// fmt.Sprintf("%.2f", record.Close), // Adj Close is same as Close in this case
+				fmt.Sprintf("%.2f", record.Close), // Adj Close is same as Close in this case
 				fmt.Sprintf("%.2f", record.Volume),
 			}
 			writer.Write(row)

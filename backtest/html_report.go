@@ -53,6 +53,9 @@ type HTMLReport struct {
 
 	// Logger is the slog logger instance.
 	Logger *slog.Logger
+
+	// Subdir
+	Subdir string
 }
 
 // htmlReportResult encapsulates the outcome of running a strategy.
@@ -84,13 +87,25 @@ func NewHTMLReport(outputDir string) *HTMLReport {
 		WriteStrategyReports: DefaultWriteStrategyReports,
 		DateFormat:           helper.DefaultReportDateFormat,
 		Logger:               slog.Default(),
+		Subdir:               "",
+	}
+}
+
+func NewHTMLReportWith(outputDir string, subdir string) *HTMLReport {
+	return &HTMLReport{
+		outputDir:            outputDir,
+		assetResults:         make(map[string][]*htmlReportResult),
+		WriteStrategyReports: DefaultWriteStrategyReports,
+		DateFormat:           helper.DefaultReportDateFormat,
+		Logger:               slog.Default(),
+		Subdir:               subdir,
 	}
 }
 
 // Begin is called when the backtest starts.
 func (h *HTMLReport) Begin(assetNames []string, _ []strategy.Strategy) error {
 	// Make sure that output directory exists.
-	err := os.MkdirAll(h.outputDir, 0o700)
+	err := os.MkdirAll(h.getOutputDir(), 0o700)
 	if err != nil {
 		return fmt.Errorf("unable to make the output directory: %w", err)
 	}
@@ -128,7 +143,7 @@ func (h *HTMLReport) Write(assetName string, currentStrategy strategy.Strategy, 
 
 		reportFile := h.strategyReportFileName(assetName, currentStrategy.Name())
 
-		err := report.WriteToFile(path.Join(h.outputDir, reportFile))
+		err := report.WriteToFile(path.Join(h.getOutputDir(), reportFile))
 		if err != nil {
 			return fmt.Errorf("unable to write report for %s (%v)", assetName, err)
 		}
@@ -210,10 +225,10 @@ func (h *HTMLReport) writeAssetReport(name string, results []*htmlReportResult) 
 	model := Model{
 		AssetName:   name,
 		Results:     results,
-		GeneratedOn: time.Now().String(),
+		GeneratedOn: time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05"),
 	}
 
-	file, err := os.Create(filepath.Join(h.outputDir, fmt.Sprintf("%s.html", name)))
+	file, err := os.Create(filepath.Join(h.getOutputDir(), fmt.Sprintf("%s.html", name)))
 	if err != nil {
 		return fmt.Errorf("unable to open asset report file for %s: %w", name, err)
 	}
@@ -239,10 +254,10 @@ func (h *HTMLReport) writeReport() error {
 
 	model := Model{
 		Results:     h.bestResults,
-		GeneratedOn: time.Now().String(),
+		GeneratedOn: time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05"),
 	}
 
-	file, err := os.Create(filepath.Join(h.outputDir, "index.html"))
+	file, err := os.Create(filepath.Join(h.getOutputDir(), "index.html"))
 	if err != nil {
 		return fmt.Errorf("unable to open main report file: %w", err)
 	}
@@ -257,4 +272,12 @@ func (h *HTMLReport) writeReport() error {
 	}
 
 	return nil
+}
+
+func (h *HTMLReport) getOutputDir() string {
+	if h.Subdir == "" {
+		return h.outputDir
+	} else {
+		return fmt.Sprintf("%s/%s", h.outputDir, h.Subdir)
+	}
 }

@@ -9,7 +9,13 @@ import (
 //go:embed data/symbols.json
 var symbolsFS embed.FS
 
-func ReadSymbols() []string {
+type fileSymbol struct{}
+
+func NewFileSymbols() ReadSymbols {
+	return &fileSymbol{}
+}
+
+func (s *fileSymbol) Read() []string {
 	var symbols []string
 
 	data, err := symbolsFS.ReadFile("data/symbols.json")

@@ -2,6 +2,7 @@ package custom
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -21,16 +22,32 @@ func UploadFile() error {
 	}
 	defer client.Close()
 
+	uploadDir(client, ctx, "swd", bucket)
+	if time.Now().Weekday() == time.Friday {
+		uploadDir(client, ctx, "week", bucket)
+	}
+	uploadDir(client, ctx, "", bucket)
+	return nil
+}
+
+func uploadDir(client *storage.Client, ctx context.Context, dir string, bucket string) {
+	var directory = ""
+	if dir != "" {
+		directory = fmt.Sprintf("%s/", dir)
+	}
 	// Files
-	entries, err := os.ReadDir("/tmp/report")
+	entriesSwd, err := os.ReadDir(fmt.Sprintf("/tmp/report/%s", directory))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for _, e := range entries {
+	for _, e := range entriesSwd {
+		if e.IsDir() {
+			continue
+		}
 		log.Println(e.Name())
 		// Open local file.
-		f, err := os.Open("/tmp/report/" + e.Name())
+		f, err := os.Open(fmt.Sprintf("/tmp/report/%s", directory) + e.Name())
 		if err != nil {
 			log.Fatalf("os.Open: %v", err)
 		}
@@ -39,19 +56,9 @@ func UploadFile() error {
 		ctx, cancel := context.WithTimeout(ctx, time.Second*50)
 		defer cancel()
 
-		o := client.Bucket(bucket).Object(e.Name())
+		o := client.Bucket(bucket).Object(directory + e.Name())
 
-		// Optional: set a generation-match precondition to avoid potential race
-		// conditions and data corruptions. The request to upload is aborted if the
-		// object's generation number does not match your precondition.
-		// For an object that does not yet exist, set the DoesNotExist precondition.
 		// o = o.If(storage.Conditions{DoesNotExist: true})
-		// If the live object already exists in your bucket, set instead a
-		// generation-match precondition using the live object's generation number.
-		// attrs, err := o.Attrs(ctx)
-		// if err != nil {
-		// 	log.Fatalf("object.Attrs: %v", err)
-		// }
 		// o = o.If(storage.Conditions{GenerationMatch: attrs.Generation})
 
 		// Upload an object with storage.Writer.
@@ -63,5 +70,4 @@ func UploadFile() error {
 			log.Fatalf("Writer.Close: %v", err)
 		}
 	}
-	return nil
 }

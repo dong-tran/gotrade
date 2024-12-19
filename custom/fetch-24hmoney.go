@@ -65,7 +65,7 @@ func (f *Money24h) FetchData(symbols []string, days int) {
 	}
 
 	toDate := time.Now().Truncate(time.Hour)
-	fromDate := toDate.AddDate(-1, 0, -days)
+	fromDate := toDate.AddDate(0, -1, -days)
 	format := "2006-01-02T15:04:05.999Z"
 
 	// Base API URL
@@ -129,7 +129,7 @@ func (f *Money24h) FetchData(symbols []string, days int) {
 		// Write CSV header
 		writer := csv.NewWriter(file)
 		defer writer.Flush()
-		writer.Write([]string{"Date", "Open", "High", "Low", "Close", "Volume"})
+		writer.Write([]string{"Date", "Open", "High", "Low", "Close", "Adj Close", "Volume"})
 
 		// Write data rows to the CSV
 		for i := 0; i < len(symbolData.Items); i++ {
@@ -141,7 +141,7 @@ func (f *Money24h) FetchData(symbols []string, days int) {
 				fmt.Sprintf("%.2f", record.HighestPrice),
 				fmt.Sprintf("%.2f", record.LowestPrice),
 				fmt.Sprintf("%.2f", record.ClosePrice),
-				// fmt.Sprintf("%.2f", record.Close), // Adj Close is same as Close in this case
+				fmt.Sprintf("%.2f", record.ClosePrice), // Adj Close is same as Close in this case
 				fmt.Sprintf("%.2f", record.TotalMatchVolume),
 			}
 			writer.Write(row)

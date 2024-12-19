@@ -66,7 +66,7 @@ func NewReport(title string, date <-chan time.Time) *Report {
 			{},
 		},
 		DateFormat:  DefaultReportDateFormat,
-		GeneratedOn: time.Now().String(),
+		GeneratedOn: time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05"),
 	}
 }
 
