@@ -64,18 +64,18 @@ func Backtest(days int, symbols []string) {
 	// backtest.Strategies = append(backtest.Strategies, volume.NewMoneyFlowIndexStrategy())
 	// backtest.Strategies = append(backtest.Strategies, volume.NewNegativeVolumeIndexStrategy())
 	// backtest.Strategies = append(backtest.Strategies, volume.NewVolumeWeightedAveragePriceStrategy())
-	doReport(reportPath+"/swd", symbols, days, secondStrategy)
-	doReport(reportPath, symbols, days, combined)
+	doReport(reportPath, "swd", symbols, days, secondStrategy)
+	doReport(reportPath, "", symbols, days, combined)
 }
 
 func stopLoss(stg strategy.Strategy) strategy.Strategy {
 	return decorator.NewStopLossStrategy(stg, 0.1)
 }
 
-func doReport(reportPath string, symbols []string, days int, stg strategy.Strategy) {
+func doReport(reportPath string, subdir string, symbols []string, days int, stg strategy.Strategy) {
 	var csvPath = "/tmp/csv"
 	var err error
-	report := backtest.NewHTMLReport(reportPath)
+	report := backtest.NewHTMLReportWith(reportPath, subdir)
 	repository := asset.NewFileSystemRepository(csvPath)
 	backtest := backtest.NewBacktest(repository, report)
 	backtest.Names = append(backtest.Names, symbols...)
