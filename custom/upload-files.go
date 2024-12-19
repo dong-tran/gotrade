@@ -22,15 +22,18 @@ func UploadFile() error {
 	defer client.Close()
 
 	// Files
-	entries, err := os.ReadDir("/tmp/report")
+	entriesSwd, err := os.ReadDir("/tmp/report/swd")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for _, e := range entries {
+	for _, e := range entriesSwd {
+		if e.IsDir() {
+			continue
+		}
 		log.Println(e.Name())
 		// Open local file.
-		f, err := os.Open("/tmp/report/" + e.Name())
+		f, err := os.Open("/tmp/report/swd/" + e.Name())
 		if err != nil {
 			log.Fatalf("os.Open: %v", err)
 		}
@@ -39,7 +42,7 @@ func UploadFile() error {
 		ctx, cancel := context.WithTimeout(ctx, time.Second*50)
 		defer cancel()
 
-		o := client.Bucket(bucket).Object(e.Name())
+		o := client.Bucket(bucket).Object("swd/" + e.Name())
 
 		// Optional: set a generation-match precondition to avoid potential race
 		// conditions and data corruptions. The request to upload is aborted if the
@@ -53,6 +56,38 @@ func UploadFile() error {
 		// 	log.Fatalf("object.Attrs: %v", err)
 		// }
 		// o = o.If(storage.Conditions{GenerationMatch: attrs.Generation})
+
+		// Upload an object with storage.Writer.
+		wc := o.NewWriter(ctx)
+		if _, err = io.Copy(wc, f); err != nil {
+			log.Fatalf("io.Copy: %v", err)
+		}
+		if err := wc.Close(); err != nil {
+			log.Fatalf("Writer.Close: %v", err)
+		}
+	}
+	// Files
+	entries, err := os.ReadDir("/tmp/report")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, e := range entries {
+		if e.IsDir() {
+			continue
+		}
+		log.Println(e.Name())
+		// Open local file.
+		f, err := os.Open("/tmp/report/" + e.Name())
+		if err != nil {
+			log.Fatalf("os.Open: %v", err)
+		}
+		defer f.Close()
+
+		ctx, cancel := context.WithTimeout(ctx, time.Second*50)
+		defer cancel()
+
+		o := client.Bucket(bucket).Object(e.Name())
 
 		// Upload an object with storage.Writer.
 		wc := o.NewWriter(ctx)
