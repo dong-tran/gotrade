@@ -225,7 +225,7 @@ func (h *HTMLReport) writeAssetReport(name string, results []*htmlReportResult) 
 	model := Model{
 		AssetName:   name,
 		Results:     results,
-		GeneratedOn: time.Now().Format("2006-01-02 15:04:05"),
+		GeneratedOn: time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05"),
 	}
 
 	file, err := os.Create(filepath.Join(h.getOutputDir(), fmt.Sprintf("%s.html", name)))
@@ -254,7 +254,7 @@ func (h *HTMLReport) writeReport() error {
 
 	model := Model{
 		Results:     h.bestResults,
-		GeneratedOn: time.Now().Format("2006-01-02 15:04:05"),
+		GeneratedOn: time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05"),
 	}
 
 	file, err := os.Create(filepath.Join(h.getOutputDir(), "index.html"))
