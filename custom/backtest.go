@@ -24,33 +24,17 @@ type DailyData struct {
 }
 
 func Backtest(days int, symbols []string) {
-	var csvPath = "/tmp/csv"
-	var err error
-
 	// report := backtest.NewDataReport()
 	var reportPath = "/tmp/report"
-	err = os.RemoveAll(reportPath + "/")
+	err := os.RemoveAll(reportPath + "/")
 	if err != nil {
 		log.Fatalf("Error when clean report output folder: %v", err)
 	}
-	report := backtest.NewHTMLReport(reportPath)
-	if err != nil {
-		log.Fatalf("Error when create report: %v", err)
-	}
-	repository := asset.NewFileSystemRepository(csvPath)
-	backtest := backtest.NewBacktest(repository, report)
-	backtest.Names = append(backtest.Names, symbols...)
-	backtest.Workers = 5
-	backtest.LastDays = days
-	//
-	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On UpTrend", trend.NewBopStrategy(), volume.NewForceIndexStrategy(), momentum.NewAwesomeOscillatorStrategy())))
-	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("BoP-RSI (Sideway - Down)", trend.NewBopStrategy(), momentum.NewRsiStrategy())))
-	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("MACD Stochastic", trend.NewMacdStrategy(), momentum.NewStochasticRsiStrategy())))
 
 	var buyStrategy = strategy.NewAndStrategy("BoP-KDJ-FI", trend.NewBopStrategy(), trend.NewKdjStrategy(), volume.NewForceIndexStrategy())
 	var sellStrategy = strategy.NewAndStrategy("AOsi-FI", momentum.NewAwesomeOscillatorStrategy(), volume.NewForceIndexStrategy())
-	var combined = strategy.NewSplitStrategy(buyStrategy, sellStrategy)
-	backtest.Strategies = append(backtest.Strategies, stopLoss(combined))
+	var combined = stopLoss(strategy.NewSplitStrategy(buyStrategy, sellStrategy))
+	var secondStrategy = stopLoss(strategy.NewAndStrategy("BoP-RSI (Sideway - Down)", trend.NewBopStrategy(), momentum.NewRsiStrategy()))
 
 	// backtest.Strategies = append(backtest.Strategies, trend.NewBopStrategy())
 	// backtest.Strategies = append(backtest.Strategies, trend.NewKamaStrategy())
@@ -80,15 +64,27 @@ func Backtest(days int, symbols []string) {
 	// backtest.Strategies = append(backtest.Strategies, volume.NewMoneyFlowIndexStrategy())
 	// backtest.Strategies = append(backtest.Strategies, volume.NewNegativeVolumeIndexStrategy())
 	// backtest.Strategies = append(backtest.Strategies, volume.NewVolumeWeightedAveragePriceStrategy())
-
-	err = backtest.Run()
-	// PrintDataReport(symbols, report)
-	// }
-	if err != nil {
-		log.Fatal(err)
-	}
+	doReport(reportPath+"/swd", symbols, days, secondStrategy)
+	doReport(reportPath, symbols, days, combined)
 }
 
 func stopLoss(stg strategy.Strategy) strategy.Strategy {
 	return decorator.NewStopLossStrategy(stg, 0.1)
+}
+
+func doReport(reportPath string, symbols []string, days int, stg strategy.Strategy) {
+	var csvPath = "/tmp/csv"
+	var err error
+	report := backtest.NewHTMLReport(reportPath)
+	repository := asset.NewFileSystemRepository(csvPath)
+	backtest := backtest.NewBacktest(repository, report)
+	backtest.Names = append(backtest.Names, symbols...)
+	backtest.Workers = 5
+	backtest.LastDays = days
+	backtest.Strategies = append(backtest.Strategies, stg)
+	err = backtest.Run()
+	// PrintDataReport(symbols, report)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
