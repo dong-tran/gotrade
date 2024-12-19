@@ -10,7 +10,7 @@ import (
 func main() {
 	days, err := strconv.Atoi(os.Getenv("LOOKBACK_DAYS"))
 	if err != nil {
-		days = 730
+		days = 365
 	}
 
 	fetchSource := os.Getenv("FETCH_SOURCE")

@@ -40,14 +40,14 @@ func Backtest(days int, symbols []string) {
 	repository := asset.NewFileSystemRepository(csvPath)
 	backtest := backtest.NewBacktest(repository, report)
 	backtest.Names = append(backtest.Names, symbols...)
-	backtest.Workers = 3
+	backtest.Workers = 5
 	backtest.LastDays = days
 	//
 	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On UpTrend", trend.NewBopStrategy(), volume.NewForceIndexStrategy(), momentum.NewAwesomeOscillatorStrategy())))
 	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On DownTrend", trend.NewBopStrategy(), momentum.NewRsiStrategy())))
-	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("MACD Stochastic", trend.NewMacdStrategy(), momentum.NewStochasticRsiStrategy())))
+	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("MACD Stochastic", trend.NewMacdStrategy(), momentum.NewStochasticRsiStrategy())))
 
-	var buyStrategy = strategy.NewAndStrategy("Bop-Kdj-FI", trend.NewBopStrategy(), trend.NewKdjStrategy(), volume.NewForceIndexStrategy())
+	var buyStrategy = strategy.NewAndStrategy("BoP-KDJ-FI", trend.NewBopStrategy(), trend.NewKdjStrategy(), volume.NewForceIndexStrategy())
 	var sellStrategy = strategy.NewAndStrategy("AOsi-FI", momentum.NewAwesomeOscillatorStrategy(), volume.NewForceIndexStrategy())
 	var combined = strategy.NewSplitStrategy(buyStrategy, sellStrategy)
 	backtest.Strategies = append(backtest.Strategies, stopLoss(combined))

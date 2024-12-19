@@ -65,7 +65,7 @@ func (f *Money24h) FetchData(symbols []string, days int) {
 	}
 
 	toDate := time.Now().Truncate(time.Hour)
-	fromDate := toDate.AddDate(-1, 0, -days)
+	fromDate := toDate.AddDate(0, -1, -days)
 	format := "2006-01-02T15:04:05.999Z"
 
 	// Base API URL
