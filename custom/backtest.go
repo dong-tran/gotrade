@@ -44,7 +44,7 @@ func Backtest(days int, symbols []string) {
 	backtest.LastDays = days
 	//
 	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On UpTrend", trend.NewBopStrategy(), volume.NewForceIndexStrategy(), momentum.NewAwesomeOscillatorStrategy())))
-	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("Good On DownTrend", trend.NewBopStrategy(), momentum.NewRsiStrategy())))
+	backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("BoP-RSI (Sideway - Down)", trend.NewBopStrategy(), momentum.NewRsiStrategy())))
 	// backtest.Strategies = append(backtest.Strategies, stopLoss(strategy.NewAndStrategy("MACD Stochastic", trend.NewMacdStrategy(), momentum.NewStochasticRsiStrategy())))
 
 	var buyStrategy = strategy.NewAndStrategy("BoP-KDJ-FI", trend.NewBopStrategy(), trend.NewKdjStrategy(), volume.NewForceIndexStrategy())
