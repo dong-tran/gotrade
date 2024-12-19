@@ -79,7 +79,7 @@ func doReport(reportPath string, symbols []string, days int, stg strategy.Strate
 	repository := asset.NewFileSystemRepository(csvPath)
 	backtest := backtest.NewBacktest(repository, report)
 	backtest.Names = append(backtest.Names, symbols...)
-	backtest.Workers = 5
+	backtest.Workers = 1
 	backtest.LastDays = days
 	backtest.Strategies = append(backtest.Strategies, stg)
 	err = backtest.Run()
